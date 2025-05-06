@@ -31,7 +31,7 @@ const Signup = () => {
   };
   return (
     <div className="row justify-content-center mt-4 ">
-      <div className="card shadow col-md-6 p-4">
+      <div className="card shadow col-md-6 p-4 mt-5 mb-5">
         <h1>Sign up</h1>
         {loading}
         {success}

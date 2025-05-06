@@ -39,7 +39,7 @@ const AddProducts = () => {
   };
   return (
     <div className="row justify-content-center">
-      <div className="card shadow col-md-6 p-4 mt-4">
+      <div className="card shadow col-md-6 p-4 mt-5 mb-5">
         <h1>Sell House</h1>
         {loading}
         {success}

@@ -7,7 +7,7 @@ const NotFound = () => {
   return (
     <div> 
         
-    <img src={pic} alt="" />
+    <img src={pic} alt="" width="100%" height="400px" />
     <br />
     <button className='btn btn-outline-dark' onClick={()=> {navigate('/')}}>Home</button>
     </div>

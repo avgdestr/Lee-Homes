@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -49,7 +49,7 @@ nav{
   text-decoration: none;
   color: white;
 }
-.navdiv{
+.nav1{
   text-align: end;
 }
 #card-image {
@@ -70,3 +70,90 @@ img{
 .card{
   height: 800px;
 }
+/* App.css */
+.page-background {
+  background-image: url('/src/Images/bgluxury.jpg'); /* relative to the public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* or 100% for container height */
+  width: 100%;
+}
+.link2{
+  
+  text-decoration: none;
+  color: white;
+}
+.div1{
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: large;
+  
+}
+/* Highlight active nav links */
+.active-link {
+  font-weight: bold;
+  color: orange !important;
+  text-decoration: underline;
+}
+.chatbot {
+  width: 97%;
+  height: 40%;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background-color: #DCF8C6;
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background-color: #eee;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+
+.chat-input button {
+  padding: 10px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+

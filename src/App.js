@@ -1,150 +1,168 @@
-
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import GetProducts from "./components/GetProducts";
 import AddProducts from "./components/AddProducts";
 import Payment from "./components/Payment";
 import NotFound from "./components/NotFound";
-import pic1 from "./Images/mansion1.jpg";
-import pic2 from "./Images/mansion2.jpg";
-import pic3 from "./Images/mansion5.jpg";
-import pic4 from './Images/mansion6.jpg'
+import Home from "./components/Home";
+import "./App.css";
+import Chatbot from "./components/Chatbot";
 
 function App() {
+  // Store the full user object
+  const [user, setUser] = useState(null);
+
+  // Load user from localStorage on app start
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // Function to set user after login
+  const handleLogin = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  // Function to logout
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
-        <nav className="row">
-          <div className="col-md-6 lee">
-            <h2 className="text-light">
-              <i class="bi bi-house"></i>Lee Luxury Homes
-            </h2>
-          </div>
-          <div className="navdiv col-md-6">
-            <Link to="/signin" className="link">
-              Sign In
-            </Link>
-            <Link to="/signup" className="link">
-              Sign Up
-            </Link>
-          </div>
+        {/* Top auth nav */}
+        <nav className="nav1">
+          {user ? (
+            <>
+              <span className="link">Hello, {user.username}!</span>
+              <button onClick={handleLogout} className="btn btn-outline-danger">
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink
+                to="/signin"
+                className={({ isActive }) =>
+                  isActive ? "link active-link" : "link"
+                }
+              >
+                Sign In
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className={({ isActive }) =>
+                  isActive ? "link active-link" : "link"
+                }
+              >
+                Sign Up
+              </NavLink>
+            </>
+          )}
         </nav>
 
-        <header className="App-header"></header>
-        <section className="row">
-          <div
-            id="carouselExampleCaptions"
-            className="carousel slide"
-            data-bs-ride="carousel"
+        {/* Header */}
+        <header className="App-header">
+          <h2 className="text-light">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "link2 active-link" : "link2"
+              }
+            >
+              <i className="bi bi-house"></i>
+            </NavLink>
+            Lee Luxury Homes
+          </h2>
+        </header>
+
+        {/* Main nav */}
+        <nav className="p-4">
+          <NavLink
+            to="/buyhouse"
+            className={({ isActive }) =>
+              isActive ? "Link active-link" : "Link"
+            }
           >
-            <div className="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="0"
-                className="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="3"
-                aria-label="Slide 4"
-              ></button>
-            </div>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img src={pic1} className=" w-100" alt="Penthouse 1" />
-              </div>
-              <div className="carousel-item">
-                <img src={pic2} className=" w-100" alt="Penthouse 2" />
-              </div>
-              <div className="carousel-item">
-                <img src={pic3} className=" w-100" alt="Penthouse 3" />
-              </div>
-              <div className="carousel-item">
-                <img src={pic4} className=" w-100" alt="Penthouse 3" />
-              </div>
-            </div>
-            <button
-              className="carousel-control-prev bg-dark"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next bg-dark"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
-        </section>
-
-        <nav>
-          <Link to="/" className="Link">
-           Buy House
-          </Link>
-          <Link to="/addproduct" className="Link">
-            sell house
-          </Link>
+            Buy House
+          </NavLink>
+          <NavLink
+            to="/addproduct"
+            className={({ isActive }) =>
+              isActive ? "Link active-link" : "Link"
+            }
+          >
+            Sell House
+          </NavLink>
+          <NavLink
+            to="/leehomeschatbot"
+            className={({ isActive }) =>
+              isActive ? "Link active-link" : "Link"
+            }
+          >
+            <i class="bi bi-robot"></i>
+          </NavLink>
         </nav>
 
+        {/* Page Routes */}
         <Routes>
           <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/" element={<GetProducts />} />
+          <Route path="/signin" element={<Signin onLogin={handleLogin} />} />
+          <Route path="/buyhouse" element={<GetProducts />} />
           <Route path="/addproduct" element={<AddProducts />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/leehomeschatbot" element={<Chatbot />} />
         </Routes>
       </BrowserRouter>
-      <div className="row bg-dark mt-4 justify-content-center text-light p-4">
+
+      {/* Footer */}
+      <div className="row bg-dark justify-content-center text-light p-5">
         <div className="col-md-6">
           <h2>About us</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            impedit labore quas. Eligendi nesciunt officiis qui, dolorem maxime
-            beatae quo architecto praesentium ad, fuga harum delectus commodi
-            quasi maiores quibusdam?
+            This website was built by billionaire tycoon, Lee Kinyua, to ease
+            the process of buying penthouses in alignment with current
+            technological advancements. LEE HOUSES is not a real-estate company
+            but an internet service provider that connects sellers to buyers.
           </p>
         </div>
         <div className="col-md-6">
-          <h2>social media</h2>
-          <p>follow us on</p>
-          <a href="https://www.instagram.com/0.lee0/" target="_blank">
-            <i className="bi bi-instagram"></i>
+          <h2>Social Media</h2>
+          <p>Follow us on:</p>
+          <a href="#" target="_blank" className="text-light m-1 fs-4">
+            <i className="bi bi-facebook"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/0.lee0/?next=%2F"
+            target="_blank"
+            className="text-light m-1 fs-4"
+          >
+            <i className="bi bi-linkedin"></i>
+          </a>
+          <a href="#" target="_blank" className="text-light m-1 fs-4">
+            <i className="bi bi-twitter"></i>
+          </a>
+          <a
+            href="https://wa.me/+254794927995"
+            target="_blank"
+            className="text-light m-1 fs-4"
+          >
+            <i className="bi bi-whatsapp"></i>
           </a>
         </div>
       </div>
+
+      {/* Bootstrap Icons CDN */}
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
