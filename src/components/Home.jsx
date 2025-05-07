@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className="page-background">
       <h1 className="text-light p-5">WELCOME TO LEE LUXURY HOMES</h1>
-      <div className="text-light m-4 div1 p-5">
+      <div className="text-light m-4 div1 p-5 col-md-12">
         <p>
           {" "}
           <b>
