@@ -126,7 +126,13 @@ function App() {
       </BrowserRouter>
 
       {/* Footer */}
-      <div className="row footer bg-dark justify-content-center text-light p-5 ">
+      <div className="row footer
+      
+      
+      
+      
+      
+      bg-dark justify-content-center text-light p-5 ">
         <div className="col-md-6">
           <h2>About us</h2>
           <p>
