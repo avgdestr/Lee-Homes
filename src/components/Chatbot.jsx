@@ -89,8 +89,8 @@ const Chatbot = () => {
 
   return (
     
-    <div className="chatbot card shadow m-5">
-      <div className="chat-window ">
+    <div className="chatbot row justify-content-center card shadow m-5">
+      <div className="chat-window col-md-12 ">
         {messages.map((msg, idx) => (
           <div key={idx} className={`chat-message ${msg.sender}`}>
             {msg.text}
