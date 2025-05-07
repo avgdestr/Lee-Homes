@@ -108,7 +108,7 @@ function App() {
               isActive ? "Link active-link" : "Link"
             }
           >
-            <i class="bi bi-robot"></i>
+            <i  class="bi bi-robot"></i>
           </NavLink>
         </nav>
 
