@@ -96,15 +96,14 @@ img{
   text-decoration: underline;
 }
 .chatbot {
-  width: 97%;
-  height: 40%;
+  width: 90%;
+  height: 100%;
   border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  position: relative;
+margin: 100px;
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   border-radius: 8px;

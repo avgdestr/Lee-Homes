@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
-      text: "Hi there! How can I assist you with buying or selling a home today?",
+      text: "Hi there! Im Lelouch, How can I assist you with buying or selling a home today?",
       sender: "bot",
     },
   ]);
@@ -88,8 +88,8 @@ const Chatbot = () => {
   }, [messages]);
 
   return (
-    <div className="chatbot card shadow">
-      <div className="chat-window">
+    <div className="chatbot row  card shadow">
+      <div className="chat-window col-md-12">
         {messages.map((msg, idx) => (
           <div key={idx} className={`chat-message ${msg.sender}`}>
             {msg.text}

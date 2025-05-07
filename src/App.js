@@ -116,17 +116,17 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin onLogin={handleLogin} />} />
+          <Route path="/leehomeschatbot" element={<Chatbot />} />
           <Route path="/buyhouse" element={<GetProducts />} />
           <Route path="/addproduct" element={<AddProducts />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
-          <Route path="/leehomeschatbot" element={<Chatbot />} />
         </Routes>
       </BrowserRouter>
 
       {/* Footer */}
-      <div className="row bg-dark justify-content-center text-light p-5">
+      <div className="row footer bg-dark justify-content-center text-light p-5 ">
         <div className="col-md-6">
           <h2>About us</h2>
           <p>
