@@ -54,6 +54,9 @@ const Chatbot = () => {
     } else if (/help|assist|guide/i.test(userInput)) {
       response =
         "I'm here to help! You can ask me about property listings, pricing, and the buying process. Just let me know your preferences!";
+    } else if (/how do i pay|how to pay|pay/i.test(userInput)) {
+      response =
+        "click on the buy button on the item you are interested in";
     } else {
       response = `Sorry, I didn't quite catch that. Could you please clarify?`;
     }
